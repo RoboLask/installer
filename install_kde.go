@@ -1,21 +1,11 @@
-package main
+#!/bin/bash
 
-import (
-	"fmt"
-	"os/exec"
-)
+echo "youe choice"
+read user_input
 
-func main() {
-	var i string
-	fmt.Print("Enter your choice: ")
-	fmt.Scan(&i)
-	if i == "kde" {
-		cmd := exec.Command("sudo", "pacman", "-S", "plasma", "dolphin", "konsole", "sddm")
-		cmdq := exec.Command("systemctl", "enable", "sddm.service")
-
-		cmd.Run()
-		cmdq.Run()
-	} else {
-		fmt.Println("Invalid input")
-	}
-}
+if [ "$user_input" -eq 1 ]; then
+    sudo pacman -S plasma konsole sddm dolphin
+    systemctl enable sddm.service
+else
+    echo "sd"
+fi
