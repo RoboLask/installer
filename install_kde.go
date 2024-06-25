@@ -10,13 +10,11 @@ func main() {
 	fmt.Print("Enter your choice: ")
 	fmt.Scan(&i)
 	if i == "kde" {
-		cmd := exec.Command("sudo", "pacman", "-S", "plasma", "dolphin", "konsole")
-		output, err := cmd.CombinedOutput()
-		if err != nil {
-			fmt.Println("Error:", err)
-			return
-		}
-		fmt.Println(string(output))
+		cmd := exec.Command("sudo", "pacman", "-S", "plasma", "dolphin", "konsole", "sddm")
+		cmdq := exec.Command("systemctl", "enable", "sddm.service")
+
+		cmd.Run()
+		cmdq.Run()
 	} else {
 		fmt.Println("Invalid input")
 	}
